@@ -1,0 +1,213 @@
+export TEAM_ID=22F59WHQP8
+export TOKEN_KEY_FILE_NAME=/Users/wch.heo/Documents/keys/AuthKey_L6VKZF7M9V.p8
+export AUTH_KEY_ID=L6VKZF7M9V
+export DEVICE_TOKEN=80d9af6f3265f15fd51cec1ef7f55eb32a1b5705409cbe8e8eeb564adad3e84164b522825e82e5525d9f0400f97bddf93da5887772c9b719ced98fe9d3b0a90b9598bc3b20c2a87abeb51f8631d95f11
+export APNS_HOST_NAME=api.sandbox.push.apple.com
+
+export JWT_ISSUE_TIME=$(date +%s)
+export JWT_HEADER=$(printf '{ "alg": "ES256", "kid": "%s" }' "${AUTH_KEY_ID}" | openssl base64 -e -A | tr -- '+/' '-_' | tr -d =)
+export JWT_CLAIMS=$(printf '{ "iss": "%s", "iat": %d }' "${TEAM_ID}" "${JWT_ISSUE_TIME}" | openssl base64 -e -A | tr -- '+/' '-_' | tr -d =)
+export JWT_HEADER_CLAIMS="${JWT_HEADER}.${JWT_CLAIMS}"
+export JWT_SIGNED_HEADER_CLAIMS=$(printf "${JWT_HEADER_CLAIMS}" | openssl dgst -binary -sha256 -sign "${TOKEN_KEY_FILE_NAME}" | openssl base64 -e -A | tr -- '+/' '-_' | tr -d =)
+export AUTHENTICATION_TOKEN="${JWT_HEADER}.${JWT_CLAIMS}.${JWT_SIGNED_HEADER_CLAIMS}"
+
+
+
+curl -v \
+--header "apns-topic:com.woncheol.delivery.push-type.liveactivity" \
+--header "apns-push-type:liveactivity" \
+--header "authorization: bearer $AUTHENTICATION_TOKEN" \
+--data \
+'{"aps": {
+"event": "update",
+"timestamp":1717402800,
+"sound": "chime",
+"content-state": {
+"deliveryStatus": "주문확인",
+"shortDeliveryStatus": "주문확인",
+"deliveryBarValue": 0,
+"statusImage": "confirming",
+"arrivalTime": "주문을 확인하고 있어요"
+},
+"alert": {
+"title": "Hello",
+"body": "update"
+}
+}}' \
+--http2 \
+https://${APNS_HOST_NAME}/3/device/$DEVICE_TOKEN
+
+
+curl -v \
+--header "apns-topic:com.woncheol.delivery.push-type.liveactivity" \
+--header "apns-push-type:liveactivity" \
+--header "authorization: bearer $AUTHENTICATION_TOKEN" \
+--data \
+'{"aps": {
+"event": "update",
+"timestamp":1717032240,
+"sound": "chime",
+"content-state": {
+"deliveryStatus": "접수완료",
+"shortDeliveryStatus": "접수완료",
+"deliveryBarValue": 20,
+"statusImage": "confirming",
+"arrivalTime": "주문 접수가 완료되었습니다."
+},
+"alert": {
+"title": "Hello",
+"body": "update"
+}
+}}' \
+--http2 \
+https://${APNS_HOST_NAME}/3/device/$DEVICE_TOKEN
+
+
+curl -v \
+--header "apns-topic:com.woncheol.delivery.push-type.liveactivity" \
+--header "apns-push-type:liveactivity" \
+--header "authorization: bearer $AUTHENTICATION_TOKEN" \
+--data \
+'{"aps": {
+"event": "update",
+"timestamp":1717032300,
+"sound": "chime",
+"content-state": {
+"deliveryStatus": "조리중",
+"shortDeliveryStatus": "조리중",
+"deliveryBarValue": 33,
+"statusImage": "cooking",
+"arrivalTime": "오후 7시 30븐 도착 예정"
+},
+"alert": {
+"title": "Hello",
+"body": "update"
+}
+}}' \
+--http2 \
+https://${APNS_HOST_NAME}/3/device/$DEVICE_TOKEN
+
+
+
+
+curl -v \
+--header "apns-topic:com.woncheol.delivery.push-type.liveactivity" \
+--header "apns-push-type:liveactivity" \
+--header "authorization: bearer $AUTHENTICATION_TOKEN" \
+--data \
+'{"aps": {
+"event": "update",
+"timestamp": 1717032360,
+"sound": "chime",
+"content-state": {
+"deliveryStatus": "배달시작",
+"shortDeliveryStatus": "배달시작",
+"deliveryBarValue": 66,
+"statusImage": "delivering",
+"arrivalTime": "오후 7시 30븐 도착 예정"
+},
+"alert": {
+"title": "Hello",
+"body": "update"
+}
+}}' \
+--http2 \
+https://${APNS_HOST_NAME}/3/device/$DEVICE_TOKEN
+
+
+
+curl -v \
+--header "apns-topic:com.woncheol.delivery.push-type.liveactivity" \
+--header "apns-push-type:liveactivity" \
+--header "authorization: bearer $AUTHENTICATION_TOKEN" \
+--data \
+'{"aps": {
+"event": "update",
+"timestamp":1717032420,
+"sound": "chime",
+"content-state": {
+"deliveryStatus": "곧 도착",
+"shortDeliveryStatus": "곧 도착",
+"deliveryBarValue": 90,
+"statusImage": "confirming",
+"arrivalTime": "음식이 곧 도착합니다."
+},
+"alert": {
+"title": "Hello",
+"body": "update"
+}
+}}' \
+--http2 \
+https://${APNS_HOST_NAME}/3/device/$DEVICE_TOKEN
+
+
+curl -v \
+--header "apns-topic:com.woncheol.delivery.push-type.liveactivity" \
+--header "apns-push-type:liveactivity" \
+--header "authorization: bearer $AUTHENTICATION_TOKEN" \
+--data \
+'{"aps": {
+"event": "update",
+"timestamp":1717032480,
+"sound": "chime",
+"content-state": {
+"deliveryStatus": "배달완료",
+"shortDeliveryStatus": "배달완료",
+"deliveryBarValue": 100,
+"statusImage": "confirming",
+"arrivalTime": "맛있게 드세요 :)"
+},
+"alert": {
+"title": "Hello",
+"body": "update"
+}
+}}' \
+--http2 \
+https://${APNS_HOST_NAME}/3/device/$DEVICE_TOKEN
+
+curl -v \
+--header "apns-topic:com.woncheol.delivery.push-type.liveactivity" \
+--header "apns-push-type:liveactivity" \
+--header "authorization: bearer $AUTHENTICATION_TOKEN" \
+--data \
+'{"aps": {
+"event": "end",
+"timestamp":1681436000,
+"sound": "chime",
+"content-state": {
+"deliveryStatus": "맛있게 드세요 :)",
+"deliveryBarValue": 100,
+"statusImage": "cooking",
+"shortDeliveryStatus": "배달 완료"
+},
+"alert": {
+"title": "Hello",
+"body": "update"
+}
+}}' \
+--http2 \
+https://${APNS_HOST_NAME}/3/device/$DEVICE_TOKEN
+
+
+curl -v \
+--header "apns-topic:com.woncheol.delivery.push-type.liveactivity" \
+--header "apns-push-type:liveactivity" \
+--header "authorization: bearer $AUTHENTICATION_TOKEN" \
+--data \
+'{"aps": {
+"event": "end",
+"timestamp":1681436000,
+"sound": "chime",
+"content-state": {
+"deliveryStatus": "배달이 완료되었습니다. 맛있게 드세요 :)",
+"deliveryBarValue": 100,
+"statusImage": "cooking",
+"shortDeliveryStatus": "배달 완료"
+},
+"alert": {
+"title": "Hello",
+"body": "update"
+}
+}}' \
+--http2 \
+https://${APNS_HOST_NAME}/3/device/$DEVICE_TOKEN
