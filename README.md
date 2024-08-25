@@ -21,6 +21,8 @@ Click [here](https://betterprogramming.pub/create-live-activities-with-activityk
 ![Simulator minimal]https://github.com/fornew21c/dynamicIsland/blob/main/screenShot/IMG_8555.PNG {width=100px height=400px})
 
 
-<img src="https://example.com/image.png](https://github.com/fornew21c/dynamicIsland/blob/main/screenShot/IMG_8552.PNG" alt="Sample Image" width="100">
-<img src="https://example.com/image.png](https://github.com/fornew21c/dynamicIsland/blob/main/screenShot/IMG_8553.PNG" alt="Sample Image" width="100">
-<img src="https://example.com/image.png](https://github.com/fornew21c/dynamicIsland/blob/main/screenShot/IMG_8555.PNG" alt="Sample Image" width="100">
+<img src="https://github.com/fornew21c/dynamicIsland/blob/main/screenShot/IMG_8552.PNG" alt="Sample Image" width="100">
+<img src="https://github.com/fornew21c/dynamicIsland/blob/main/screenShot/IMG_8553.PNG" alt="Sample Image" width="100">
+<img src="https://github.com/fornew21c/dynamicIsland/blob/main/screenShot/IMG_8555.PNG" alt="Sample Image" width="100">
+
+<img src="https://github.com/fornew21c/dynamicIsland/blob/main/screenShot/IMG_8552.PNG" alt="Sample Image" width="400" height="300">
