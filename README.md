@@ -14,3 +14,8 @@ Click [here](https://betterprogramming.pub/create-live-activities-with-activityk
 /Users/woncheolheo/Downloads/IMG_8552.PNG
 ![Simulator expanded](https://user-images.githubusercontent.com/10993355/190917707-411e1a39-81a1-4c34-a789-4422b0d468d6.png)
 ![Simulator minimal](https://user-images.githubusercontent.com/10993355/190917709-5c6df5f6-1d62-4c48-81d2-60b1bd5f9ff5.png)
+
+
+![](https://github.com/fornew21c/dynamicIsland/blob/main/screenShot/IMG_8552.PNG)
+![](https://github.com/fornew21c/dynamicIsland/blob/main/screenShot/IMG_8553.PNG)
+![]https://github.com/fornew21c/dynamicIsland/blob/main/screenShot/IMG_8555.PNG)
