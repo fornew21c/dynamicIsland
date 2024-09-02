@@ -30,23 +30,24 @@ struct GroceryDeliveryApp: Widget {
                 DynamicIslandExpandedRegion(.leading) {
 //                    dynamicIslandExpandedLeadingView(context: context)
                     //                        .widgetURL(URL(string: "incheonercard://"))
-//                                        baseballDynamicIslandExpandedLeadingView(context: context)
-                    cardDynamicIslandExpandedLeadingView(context: context)
+                                        baseballDynamicIslandExpandedLeadingView(context: context)
+//                    cardDynamicIslandExpandedLeadingView(context: context)
                 }
                 
                 DynamicIslandExpandedRegion(.trailing) {
 //                    dynamicIslandExpandedTrailingView(context: context)
-//                                         baseballDynamicIslandExpandedTrailingView(context: context)
+                                         baseballDynamicIslandExpandedTrailingView(context: context)
                 }
                 
                 DynamicIslandExpandedRegion(.center) {
 //                    dynamicIslandExpandedCenterView(context: context)
-//                                         baseballDynamicIslandExpandedCenterView(context: context)
+                                         baseballDynamicIslandExpandedCenterView(context: context)
                 }
                 
                 DynamicIslandExpandedRegion(.bottom) {
 //                    dynamicIslandExpandedBottomView(context: context)
-                    cardDynamicIslandExpandedBottomView(context: context)
+                    baseballDynamicIslandExpandedBottomView(context: context)
+//                    cardDynamicIslandExpandedBottomView(context: context)
                 }
                 
               } compactLeading: {
