@@ -19,6 +19,13 @@ struct ContentView: View {
                             .foregroundColor(.blue)
                     }
                     Button(action: {
+                        createActivity()
+                        listAllDeliveries()
+                    }) {
+                        Text("코나QR결제").font(.headline)
+                            .foregroundColor(.blue)
+                    }
+                    Button(action: {
                         endAllActivity()
                         listAllDeliveries()
                     }) {

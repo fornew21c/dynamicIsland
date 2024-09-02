@@ -1,7 +1,7 @@
 export TEAM_ID=22F59WHQP8
 export TOKEN_KEY_FILE_NAME=/Users/wch.heo/Documents/keys/AuthKey_L6VKZF7M9V.p8
 export AUTH_KEY_ID=L6VKZF7M9V
-export DEVICE_TOKEN=80d9af6f3265f15fd51cec1ef7f55eb32a1b5705409cbe8e8eeb564adad3e84164b522825e82e5525d9f0400f97bddf93da5887772c9b719ced98fe9d3b0a90b9598bc3b20c2a87abeb51f8631d95f11
+export DEVICE_TOKEN=80e659687b451475923e697bda407330acd7b5dfde44d8e51dd402d02e1badda88076f2b4afe98157afb888f1f1f96ffaeb49eff77777557bba906e1f16f7aef18e2b5e71fa24d433ae95f4f1f80f20c
 export APNS_HOST_NAME=api.sandbox.push.apple.com
 
 export JWT_ISSUE_TIME=$(date +%s)
@@ -97,7 +97,7 @@ curl -v \
 --data \
 '{"aps": {
 "event": "update",
-"timestamp": 1717032360,
+"timestamp": 1724913700,
 "sound": "chime",
 "content-state": {
 "deliveryStatus": "배달시작",
@@ -123,7 +123,7 @@ curl -v \
 --data \
 '{"aps": {
 "event": "update",
-"timestamp":1717032420,
+"timestamp":1724913800,
 "sound": "chime",
 "content-state": {
 "deliveryStatus": "곧 도착",

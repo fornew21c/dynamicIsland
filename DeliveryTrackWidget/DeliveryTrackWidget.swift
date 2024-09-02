@@ -18,6 +18,7 @@ struct Widgets: WidgetBundle {
     }
 }
 
+let remainTime: Date = .now + 120
 @available(iOSApplicationExtension 16.1, *)
 struct GroceryDeliveryApp: Widget {
    
@@ -27,24 +28,25 @@ struct GroceryDeliveryApp: Widget {
         } dynamicIsland: { context in
             DynamicIsland {
                 DynamicIslandExpandedRegion(.leading) {
-                    dynamicIslandExpandedLeadingView(context: context)
+//                    dynamicIslandExpandedLeadingView(context: context)
                     //                        .widgetURL(URL(string: "incheonercard://"))
-                    //                    baseballDynamicIslandExpandedLeadingView(context: context)
+//                                        baseballDynamicIslandExpandedLeadingView(context: context)
+                    cardDynamicIslandExpandedLeadingView(context: context)
                 }
                 
                 DynamicIslandExpandedRegion(.trailing) {
-                    dynamicIslandExpandedTrailingView(context: context)
-                    //                     baseballDynamicIslandExpandedTrailingView(context: context)
+//                    dynamicIslandExpandedTrailingView(context: context)
+//                                         baseballDynamicIslandExpandedTrailingView(context: context)
                 }
                 
                 DynamicIslandExpandedRegion(.center) {
-                    dynamicIslandExpandedCenterView(context: context)
-                    //                     baseballDynamicIslandExpandedCenterView(context: context)
+//                    dynamicIslandExpandedCenterView(context: context)
+//                                         baseballDynamicIslandExpandedCenterView(context: context)
                 }
                 
                 DynamicIslandExpandedRegion(.bottom) {
-                    dynamicIslandExpandedBottomView(context: context)
-                    //                    baseballDynamicIslandExpandedBottomView(context: context)
+//                    dynamicIslandExpandedBottomView(context: context)
+                    cardDynamicIslandExpandedBottomView(context: context)
                 }
                 
               } compactLeading: {
@@ -194,7 +196,6 @@ struct GroceryDeliveryApp: Widget {
     
     func baseballDynamicIslandExpandedCenterView(context: ActivityViewContext<DeliveryActivityAttributes>) -> some View {
         HStack {
-          
             Image("base")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
@@ -208,7 +209,7 @@ struct GroceryDeliveryApp: Widget {
         VStack {
             HStack {
                 Spacer().frame(width: 10)
-                Text("Ohtani shohei")
+                Text("Ohtani hohei")
                     .font(.system(size:14))
                     .bold()
                 Spacer()
@@ -233,24 +234,76 @@ struct GroceryDeliveryApp: Widget {
             }
          
         }
-    
     }
+    
+    func cardDynamicIslandExpandedLeadingView(context: ActivityViewContext<DeliveryActivityAttributes>) -> some View {
+        VStack {
+            HStack {
+                Spacer().frame(width: 20)
+                Text("QR 결제")
+                    .font(.system(size:17))
+            }
+        }
+    }
+    
+    func cardDynamicIslandExpandedBottomView(context: ActivityViewContext<DeliveryActivityAttributes>) -> some View {
+        
+        HStack {
+      
+        Spacer().frame(width: 15)
+        Image("travelCard")
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .frame(width: 75, height: 50)
+            .cornerRadius(1.0)
+
+        Spacer().frame(width: 10)
+            VStack(alignment: .leading, content: {
+                Text("코나카드")
+                    .font(.system(size:14))
+                    .foregroundColor(.gray)
+                   
+                Text("트레블 제로카드")
+                    .font(.system(size:20))
+                    .bold()
+            })
+
+         Text(remainTime, style: .timer)
+            .font(.system(size: 27))
+            .monospacedDigit()
+            .multilineTextAlignment(.trailing)
+            .foregroundColor(.green)
+            .bold()
+            
+         
+        }
+    }
+    
     
     //MARK: Compact Views
     func compactLeadingView(context: ActivityViewContext<DeliveryActivityAttributes>) -> some View {
         HStack {
             Spacer()
-            Image("appicon_40")
+//            Image("appicon_40")
+            Image("travelCard")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(width: 20, height: 20)
-                .cornerRadius(2)
+                .frame(width: 30, height: 20)
+                .cornerRadius(1)
         }
     }
     
     func compactTrailingView(context: ActivityViewContext<DeliveryActivityAttributes>) -> some View {
-        Text(context.state.deliveryStatus)
-            .font(.system(size:11))
+
+        return Text(remainTime, style: .timer)
+            .multilineTextAlignment(.trailing)
+            .frame(width: 50)
+            .monospacedDigit()
+            .foregroundColor(.green)
+            .bold()
+//        TimerView()
+//        Text(context.state.deliveryStatus)
+//            .font(.system(size:11))
     }
 
     func minimalView(context: ActivityViewContext<DeliveryActivityAttributes>) -> some View {
@@ -263,9 +316,29 @@ struct GroceryDeliveryApp: Widget {
 //                .font(.caption2)
         }
     }
+    
+
+    var remainingTimeFormatted: String {
+         let minutes = 2 // 2분으로 고정
+         let seconds = 0 // 초기 설정이므로 0초
+         return String(format: "%02d:%02d", minutes, seconds)
+     }
+    
+
+}
+
+struct TimerState {
+    var remainingTime: TimeInterval
 }
 
 
+extension TimerState {
+    var remainingTimeFormatted: String {
+        let minutes = Int(remainingTime) / 60
+        let seconds = Int(remainingTime) % 60
+        return String(format: "%02d:%02d", minutes, seconds)
+    }
+}
 
 
 
@@ -356,42 +429,7 @@ struct LockScreenView: View {
         }
     
     }
-    
-    
 }
-
-struct TimerView: View {
-    @State private var remainingSeconds = 30 * 60 // 30 minutes
-    @State private var timer: Timer? = nil
-
-    var body: some View {
-        VStack {
-            Text(timeString(from: remainingSeconds))
-                .font(.body)
-                .padding()
-        }
-        .onAppear {
-            self.startTimer()
-        }
-    }
-
-    func startTimer() {
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-            if self.remainingSeconds > 0 {
-                self.remainingSeconds -= 1
-            } else {
-                self.timer?.invalidate()
-            }
-        }
-    }
-
-    func timeString(from seconds: Int) -> String {
-        let minutes = (seconds % 3600) / 60
-        let seconds = (seconds % 3600) % 60
-        return String(format: "%02d:%02d", minutes, seconds)
-    }
-}
-
 
 struct BottomLineView: View {
     var deliveryBarValue: Float
