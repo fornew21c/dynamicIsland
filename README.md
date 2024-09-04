@@ -6,6 +6,13 @@ This demo app was developed for Create Live Activities With ActivityKit on iOS 1
 <img src="https://github.com/fornew21c/dynamicIsland/blob/main/screenShot/IMG_8552.PNG" alt="Sample Image" width="200">
 <img src="https://github.com/fornew21c/dynamicIsland/blob/main/screenShot/IMG_8553.PNG" alt="Sample Image" width="200">
 <img src="https://github.com/fornew21c/dynamicIsland/blob/main/screenShot/IMG_8555.PNG" alt="Sample Image" width="200">
+<<<<<<< HEAD
 <img src="https://github.com/fornew21c/dynamicIsland/blob/main/screenShot/MLBBaseball.png" alt="Sample Image" width="200">
 </p>
+=======
+
+</p>
+<br>
+<img src="https://github.com/fornew21c/dynamicIsland/blob/main/screenShot/MLBBaseball.png" alt="Sample Image" width="200">
+>>>>>>> af6817e79077a18a4b12019d38bad0041eb22a76
 
