@@ -1,17 +1,3 @@
-export TEAM_ID=22F59WHQP8
-export TOKEN_KEY_FILE_NAME=/Users/wch.heo/Documents/keys/AuthKey_L6VKZF7M9V.p8
-export AUTH_KEY_ID=L6VKZF7M9V
-export DEVICE_TOKEN=80e659687b451475923e697bda407330acd7b5dfde44d8e51dd402d02e1badda88076f2b4afe98157afb888f1f1f96ffaeb49eff77777557bba906e1f16f7aef18e2b5e71fa24d433ae95f4f1f80f20c
-export APNS_HOST_NAME=api.sandbox.push.apple.com
-
-export JWT_ISSUE_TIME=$(date +%s)
-export JWT_HEADER=$(printf '{ "alg": "ES256", "kid": "%s" }' "${AUTH_KEY_ID}" | openssl base64 -e -A | tr -- '+/' '-_' | tr -d =)
-export JWT_CLAIMS=$(printf '{ "iss": "%s", "iat": %d }' "${TEAM_ID}" "${JWT_ISSUE_TIME}" | openssl base64 -e -A | tr -- '+/' '-_' | tr -d =)
-export JWT_HEADER_CLAIMS="${JWT_HEADER}.${JWT_CLAIMS}"
-export JWT_SIGNED_HEADER_CLAIMS=$(printf "${JWT_HEADER_CLAIMS}" | openssl dgst -binary -sha256 -sign "${TOKEN_KEY_FILE_NAME}" | openssl base64 -e -A | tr -- '+/' '-_' | tr -d =)
-export AUTHENTICATION_TOKEN="${JWT_HEADER}.${JWT_CLAIMS}.${JWT_SIGNED_HEADER_CLAIMS}"
-
-
 
 curl -v \
 --header "apns-topic:com.woncheol.delivery.push-type.liveactivity" \
@@ -97,14 +83,14 @@ curl -v \
 --data \
 '{"aps": {
 "event": "update",
-"timestamp": 1724913700,
+"timestamp": 1725428600,
 "sound": "chime",
 "content-state": {
 "deliveryStatus": "배달시작",
 "shortDeliveryStatus": "배달시작",
 "deliveryBarValue": 66,
 "statusImage": "delivering",
-"arrivalTime": "오후 7시 30븐 도착 예정"
+"arrivalTime": "오후 1시 20분 도착 예정"
 },
 "alert": {
 "title": "Hello",
@@ -123,7 +109,7 @@ curl -v \
 --data \
 '{"aps": {
 "event": "update",
-"timestamp":1724913800,
+"timestamp": 1725428700,
 "sound": "chime",
 "content-state": {
 "deliveryStatus": "곧 도착",

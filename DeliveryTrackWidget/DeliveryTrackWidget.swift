@@ -21,39 +21,31 @@ struct Widgets: WidgetBundle {
 let remainTime: Date = .now + 120
 @available(iOSApplicationExtension 16.1, *)
 struct GroceryDeliveryApp: Widget {
-   
+    
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: DeliveryActivityAttributes.self) { context in
             LockScreenView(context: context)
         } dynamicIsland: { context in
             DynamicIsland {
                 DynamicIslandExpandedRegion(.leading) {
-//                    dynamicIslandExpandedLeadingView(context: context)
-                    //                        .widgetURL(URL(string: "incheonercard://"))
-                                        baseballDynamicIslandExpandedLeadingView(context: context)
-//                    cardDynamicIslandExpandedLeadingView(context: context)
+                    dynamicIslandExpandedLeadingView(context: context)
                 }
-                
                 DynamicIslandExpandedRegion(.trailing) {
-//                    dynamicIslandExpandedTrailingView(context: context)
-                                         baseballDynamicIslandExpandedTrailingView(context: context)
+                     dynamicIslandExpandedTrailingView(context: context)
                 }
-                
                 DynamicIslandExpandedRegion(.center) {
-//                    dynamicIslandExpandedCenterView(context: context)
-                                         baseballDynamicIslandExpandedCenterView(context: context)
+                    dynamicIslandExpandedCenterView(context: context)
                 }
-                
                 DynamicIslandExpandedRegion(.bottom) {
-//                    dynamicIslandExpandedBottomView(context: context)
-                    baseballDynamicIslandExpandedBottomView(context: context)
+                    dynamicIslandExpandedBottomView(context: context)
 //                    cardDynamicIslandExpandedBottomView(context: context)
                 }
-                
               } compactLeading: {
-                  compactLeadingView(context: context)
+                 compactLeadingView(context: context)
+//                  cardCompactLeadingView(context: context)
               } compactTrailing: {
                   compactTrailingView(context: context)
+//                  cardCompactTrailingView(context: context)
               } minimal: {
                   minimalView(context: context)
               }
@@ -64,7 +56,7 @@ struct GroceryDeliveryApp: Widget {
     //MARK: Expanded Views
     func dynamicIslandExpandedLeadingView(context: ActivityViewContext<DeliveryActivityAttributes>) -> some View {
         HStack {
-            Spacer().frame(width: 6)
+            Spacer().frame(width: 8)
             Image("appicon_40")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
@@ -134,10 +126,16 @@ struct GroceryDeliveryApp: Widget {
                             .bold()
                         Spacer().frame(height: 5)
                         
-                        Text(context.attributes.deliveryMerchantName)
-                            .font(.system(size:13))
-                        Spacer()
-                        
+                        HStack {
+                            let url = URL(string: "LiveActivities://?contacNumber=031-336-2345")
+                            Link(destination: url!) {
+                                HStack {
+                                    Text(context.attributes.deliveryMerchantName)
+                                        .font(.system(size:14))
+                                    Image(systemName: "phone")
+                                }
+                            }
+                        }
                     }
                 }
                 Spacer()
@@ -158,83 +156,6 @@ struct GroceryDeliveryApp: Widget {
             Spacer().frame(height: 5)
         }
     
-    }
-    
-
-    //Baseball
-    
-    func baseballDynamicIslandExpandedLeadingView(context: ActivityViewContext<DeliveryActivityAttributes>) -> some View {
-        VStack {
-            HStack {
-                Spacer().frame(width: 10)
-                Text("LAD")
-                    .font(.system(size:25))
-                    .bold()
-                Spacer().frame(width:8)
-                Text("7")
-                    .font(.system(size:25))
-                    .bold()
-                
-            }
-        }
-    }
-    
-    func baseballDynamicIslandExpandedTrailingView(context: ActivityViewContext<DeliveryActivityAttributes>) -> some View {
-        
-        VStack {
-            HStack {
-                Text("SF")
-                    .font(.system(size:25))
-                    .bold()
-                Spacer().frame(width:8)
-                Text("8")
-                    .font(.system(size:25))
-                    .bold()
-                Spacer().frame(width:10)
-            }
-        }
-    }
-    
-    func baseballDynamicIslandExpandedCenterView(context: ActivityViewContext<DeliveryActivityAttributes>) -> some View {
-        HStack {
-            Image("base")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 45, height: 20)
-        }
-    }
-
-    
-    func baseballDynamicIslandExpandedBottomView(context: ActivityViewContext<DeliveryActivityAttributes>) -> some View {
-        
-        VStack {
-            HStack {
-                Spacer().frame(width: 10)
-                Text("Ohtani hohei")
-                    .font(.system(size:14))
-                    .bold()
-                Spacer()
-                Text("Junghu Lee")
-                    .font(.system(size:14))
-                    .bold()
-                Spacer().frame(width: 10)
-            }
-            
-            HStack {
-                Spacer().frame(width: 10)
-                Text("3.07 ERA")
-                    .font(.system(size:14))
-                Spacer()
-                Text("Bot 9th 3-2, 2 out")
-                    .font(.system(size:14))
-                    .bold()
-                Spacer()
-                Text(".375 AVG")
-                    .font(.system(size:14))
-                Spacer().frame(width: 10)
-            }
-         
-        }
     }
     
     func cardDynamicIslandExpandedLeadingView(context: ActivityViewContext<DeliveryActivityAttributes>) -> some View {
@@ -285,7 +206,22 @@ struct GroceryDeliveryApp: Widget {
     func compactLeadingView(context: ActivityViewContext<DeliveryActivityAttributes>) -> some View {
         HStack {
             Spacer()
-//            Image("appicon_40")
+            Image("appicon_40")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 20, height: 20)
+                .cornerRadius(2)
+        }
+    }
+    
+    func compactTrailingView(context: ActivityViewContext<DeliveryActivityAttributes>) -> some View {
+        Text(context.state.deliveryStatus)
+            .font(.system(size:11))
+    }
+    
+    func cardCompactLeadingView(context: ActivityViewContext<DeliveryActivityAttributes>) -> some View {
+        HStack {
+            Spacer()
             Image("travelCard")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
@@ -294,27 +230,52 @@ struct GroceryDeliveryApp: Widget {
         }
     }
     
-    func compactTrailingView(context: ActivityViewContext<DeliveryActivityAttributes>) -> some View {
-
+    func cardCompactTrailingView(context: ActivityViewContext<DeliveryActivityAttributes>) -> some View {
         return Text(remainTime, style: .timer)
             .multilineTextAlignment(.trailing)
             .frame(width: 50)
             .monospacedDigit()
             .foregroundColor(.green)
             .bold()
-//        TimerView()
-//        Text(context.state.deliveryStatus)
-//            .font(.system(size:11))
+    }
+    
+    func baseballCompactLeadingView(context: ActivityViewContext<DeliveryActivityAttributes>) -> some View {
+        HStack {
+            Text("LAD")
+                .font(.system(size:14))
+                .bold()
+            Spacer().frame(width:8)
+            Text("7")
+                .font(.system(size:14))
+                .bold()
+            Spacer().frame(width:10)
+        }
+    }
+    
+    func baseballCompactTrailingView(context: ActivityViewContext<DeliveryActivityAttributes>) -> some View {
+
+        HStack {
+            Text("SF")
+                .font(.system(size:14))
+                .bold()
+            Spacer().frame(width:8)
+            Text("5")
+                .font(.system(size:14))
+                .bold()
+            Spacer().frame(width:10)
+        }
     }
 
     func minimalView(context: ActivityViewContext<DeliveryActivityAttributes>) -> some View {
-        HStack(alignment: .top) {
+        VStack {
             Image("appicon_40")
-//            Text(context.state.deliveryStatus)
-//            Text(context.state.deliveryTime, style: .timer)
-//                .multilineTextAlignment(.center)
-//                .monospacedDigit()
-//                .font(.caption2)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 12, height: 12)
+                .cornerRadius(1)
+            Text(context.state.deliveryStatus)
+                .font(.system(size:7))
+
         }
     }
     

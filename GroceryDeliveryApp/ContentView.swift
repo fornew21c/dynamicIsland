@@ -4,7 +4,8 @@ import ActivityKit
 
 @available(iOS 16.1, *)
 struct ContentView: View {
-    @State var  activities = Activity<DeliveryActivityAttributes>.activities
+    @State var activities = Activity<DeliveryActivityAttributes>.activities
+    @State var activities2 = Activity<MLBActivityAttributes>.activities
     
     var body: some View {
         NavigationView {
@@ -19,6 +20,13 @@ struct ContentView: View {
                             .foregroundColor(.blue)
                     }
                     Button(action: {
+                        endAllActivity()
+                        listAllDeliveries()
+                    }) {
+                        Text("모든 배달 종료").font(.headline)
+                            .foregroundColor(.blue)
+                    }
+                    Button(action: {
                         createActivity()
                         listAllDeliveries()
                     }) {
@@ -26,10 +34,10 @@ struct ContentView: View {
                             .foregroundColor(.blue)
                     }
                     Button(action: {
-                        endAllActivity()
+                        createMLBActivity()
                         listAllDeliveries()
                     }) {
-                        Text("모든 배달 종료").font(.headline)
+                        Text("MLB 중계").font(.headline)
                             .foregroundColor(.blue)
                     }
                 }
@@ -44,6 +52,23 @@ struct ContentView: View {
             .fontWeight(.ultraLight)
         }
         
+    }
+    
+    func createMLBActivity() {
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            
+            if error != nil {
+                // Handle the error here.
+            }
+            
+            // Enable or disable features based on the authorization.
+        }
+        
+        let randomOrderNo = Int.random(in: 1..<100000)
+       
+
+
     }
     
     func createActivity() {

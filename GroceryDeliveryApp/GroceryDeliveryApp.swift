@@ -4,7 +4,7 @@ import SwiftUI
 import Foundation
 
 @main
-struct GroceryDeliveryAppApp: App {
+struct GroceryDeliveryApp: App {
     @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
     
     let center = UNUserNotificationCenter.current()
@@ -18,8 +18,13 @@ struct GroceryDeliveryAppApp: App {
             if #available(iOS 16.1, *) {
                 ContentView().onOpenURL { url in
                     guard let url = URLComponents(string: url.absoluteString) else { return }
-                    if let courierNumber = url.queryItems?.first(where: { $0.name == "CourierNumber" })?.value {
-                        // call courier
+                    if let contacNumber = url.queryItems?.first(where: { $0.name == "contacNumber" })?.value {
+                       
+                        let tel = "tel:\(contacNumber)"
+                        if let url = URL(string: tel),
+                           UIApplication.shared.canOpenURL(url) {
+                            UIApplication.shared.open(url)
+                        }
                     }
                 }
             }

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1314F23128F46ACA00FD0AC7 /* ActivityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1314F23028F46AC900FD0AC7 /* ActivityKit.framework */; };
-		13BBEA6428A7DD5D00FB1686 /* GroceryDeliveryAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BBEA6328A7DD5D00FB1686 /* GroceryDeliveryAppApp.swift */; };
+		13BBEA6428A7DD5D00FB1686 /* GroceryDeliveryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BBEA6328A7DD5D00FB1686 /* GroceryDeliveryApp.swift */; };
 		13BBEA6628A7DD5D00FB1686 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BBEA6528A7DD5D00FB1686 /* ContentView.swift */; };
 		13BBEA6828A7DD5D00FB1686 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13BBEA6728A7DD5D00FB1686 /* Assets.xcassets */; };
 		13BBEA6B28A7DD5D00FB1686 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13BBEA6A28A7DD5D00FB1686 /* Preview Assets.xcassets */; };
@@ -17,8 +17,10 @@
 		13BBEA7D28A7DDA100FB1686 /* DeliveryTrackWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BBEA7C28A7DDA100FB1686 /* DeliveryTrackWidget.swift */; };
 		13BBEA7F28A7DDA200FB1686 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13BBEA7E28A7DDA200FB1686 /* Assets.xcassets */; };
 		13BBEA8328A7DDA200FB1686 /* DeliveryTrackWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 13BBEA7528A7DDA100FB1686 /* DeliveryTrackWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		13BBEA8928A7DEAB00FB1686 /* GroceryDeliveryAppAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BBEA8828A7DEAB00FB1686 /* GroceryDeliveryAppAttributes.swift */; };
-		13BBEA8A28A7DEAB00FB1686 /* GroceryDeliveryAppAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BBEA8828A7DEAB00FB1686 /* GroceryDeliveryAppAttributes.swift */; };
+		13BBEA8928A7DEAB00FB1686 /* DeliveryAppAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BBEA8828A7DEAB00FB1686 /* DeliveryAppAttributes.swift */; };
+		13BBEA8A28A7DEAB00FB1686 /* DeliveryAppAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BBEA8828A7DEAB00FB1686 /* DeliveryAppAttributes.swift */; };
+		3E7986B62C86A07100B23691 /* MLBAppAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7986B52C86A07100B23691 /* MLBAppAttributes.swift */; };
+		3E7986F52C86DB2700B23691 /* MLBAppAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7986B52C86A07100B23691 /* MLBAppAttributes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +52,7 @@
 		1352BAF228BF8028004CD5E7 /* GroceryDeliveryApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GroceryDeliveryApp.entitlements; sourceTree = "<group>"; };
 		1352BAF328BF82B6004CD5E7 /* DeliveryTrackWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DeliveryTrackWidgetExtension.entitlements; sourceTree = "<group>"; };
 		13BBEA6028A7DD5D00FB1686 /* GroceryDeliveryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryDeliveryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13BBEA6328A7DD5D00FB1686 /* GroceryDeliveryAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryDeliveryAppApp.swift; sourceTree = "<group>"; };
+		13BBEA6328A7DD5D00FB1686 /* GroceryDeliveryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryDeliveryApp.swift; sourceTree = "<group>"; };
 		13BBEA6528A7DD5D00FB1686 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		13BBEA6728A7DD5D00FB1686 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		13BBEA6A28A7DD5D00FB1686 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -60,8 +62,9 @@
 		13BBEA7C28A7DDA100FB1686 /* DeliveryTrackWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryTrackWidget.swift; sourceTree = "<group>"; };
 		13BBEA7E28A7DDA200FB1686 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		13BBEA8028A7DDA200FB1686 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		13BBEA8828A7DEAB00FB1686 /* GroceryDeliveryAppAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryDeliveryAppAttributes.swift; sourceTree = "<group>"; };
+		13BBEA8828A7DEAB00FB1686 /* DeliveryAppAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryAppAttributes.swift; sourceTree = "<group>"; };
 		13BBEA8E28A7FAE000FB1686 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E7986B52C86A07100B23691 /* MLBAppAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLBAppAttributes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,9 +113,10 @@
 			children = (
 				1352BAF228BF8028004CD5E7 /* GroceryDeliveryApp.entitlements */,
 				13BBEA8E28A7FAE000FB1686 /* Info.plist */,
-				13BBEA6328A7DD5D00FB1686 /* GroceryDeliveryAppApp.swift */,
+				13BBEA6328A7DD5D00FB1686 /* GroceryDeliveryApp.swift */,
 				13BBEA6528A7DD5D00FB1686 /* ContentView.swift */,
-				13BBEA8828A7DEAB00FB1686 /* GroceryDeliveryAppAttributes.swift */,
+				13BBEA8828A7DEAB00FB1686 /* DeliveryAppAttributes.swift */,
+				3E7986B52C86A07100B23691 /* MLBAppAttributes.swift */,
 				13BBEA6728A7DD5D00FB1686 /* Assets.xcassets */,
 				13BBEA6928A7DD5D00FB1686 /* Preview Content */,
 			);
@@ -248,9 +252,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E7986B62C86A07100B23691 /* MLBAppAttributes.swift in Sources */,
 				13BBEA6628A7DD5D00FB1686 /* ContentView.swift in Sources */,
-				13BBEA8928A7DEAB00FB1686 /* GroceryDeliveryAppAttributes.swift in Sources */,
-				13BBEA6428A7DD5D00FB1686 /* GroceryDeliveryAppApp.swift in Sources */,
+				13BBEA8928A7DEAB00FB1686 /* DeliveryAppAttributes.swift in Sources */,
+				13BBEA6428A7DD5D00FB1686 /* GroceryDeliveryApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,7 +263,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13BBEA8A28A7DEAB00FB1686 /* GroceryDeliveryAppAttributes.swift in Sources */,
+				3E7986F52C86DB2700B23691 /* MLBAppAttributes.swift in Sources */,
+				13BBEA8A28A7DEAB00FB1686 /* DeliveryAppAttributes.swift in Sources */,
 				13BBEA7D28A7DDA100FB1686 /* DeliveryTrackWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

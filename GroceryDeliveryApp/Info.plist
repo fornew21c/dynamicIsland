@@ -8,7 +8,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.batikan.LiveActivityKit</string>
+			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>LiveActivities</string>
